@@ -1,0 +1,6 @@
+server:
+  port: 8092
+
+skaro:
+  pokeapi:
+    base-uri: https://pokeapi.co/api/v2/

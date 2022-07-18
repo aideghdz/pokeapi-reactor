@@ -9,6 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
@@ -30,6 +31,7 @@ import skaro.pokeapi.client.WebClientEntityFactory;
 
 @Configuration
 @Import(PokeApiReactorEndpointConfiguration.class)
+@PropertySource(value = "classpath:application.properties.yml", factory = YamlPropertySourceFactory.class)
 public class PokeApiReactorBaseConfiguration {
 	public static final String CONFIGURATION_PROPERTIES_PREFIX = "skaro.pokeapi";
 	public static final String POKEAPI_WEBCLIENT_BEAN = "pokeapiWebClientBean";
@@ -94,5 +96,8 @@ public class PokeApiReactorBaseConfiguration {
 	public PokeApiEntityFactory pokeApiEntityFactory(WebClient webClient, PokeApiEndpointRegistry registry) {
 		return new WebClientEntityFactory(webClient, registry);
 	}
+
+
+
 	
 }
